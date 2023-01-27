@@ -1,7 +1,14 @@
-import '@/styles/globals.css'
+import 'bootstrap/dist/css/bootstrap.min.css'
 
+import { ApolloProvider } from '@apollo/client'
 import type { AppProps } from 'next/app'
 
+import { apolloClient } from '@/lib/helpers/apolloClient'
+
 export default function App({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />
+  return (
+    <ApolloProvider client={apolloClient}>
+      <Component {...pageProps} />
+    </ApolloProvider>
+  )
 }
