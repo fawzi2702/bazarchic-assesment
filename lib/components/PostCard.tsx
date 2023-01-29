@@ -9,22 +9,23 @@ interface Props {
 
 export const PostCard: FC<Props> = ({ post }) => {
   return (
-    <Col xs={12} md={6} className="my-2 h-100">
-      <Card key={post.id} className="my-2 h-100">
-        <CardHeader className="py-2 h-25">
+    <Col xs={12} md={6} lg={4} className="my-2">
+      <Card key={post.id} className="h-100">
+        <CardHeader className="py-2">
           <Row className="align-items-center">
-            <Col className="flex-grow-0">
-              <div className="py-1 px-2 bg-dark text-white rounded-1">
+            <Col xs={2}>
+              <div className="py-1 px-2 bg-dark text-white rounded-1 d-flex justify-content-center">
                 <span>{post.id}</span>
               </div>
             </Col>
-            <Col className="flex-grow-1">
-              <h3>{post.title}</h3>
+
+            <Col xs={10}>
+              <h4 className="mb-0 text-truncate">{post.title}</h4>
             </Col>
           </Row>
         </CardHeader>
 
-        <CardBody className="h-75">
+        <CardBody>
           <p className="text-muted">{post.body}</p>
         </CardBody>
       </Card>

@@ -1,5 +1,6 @@
 import { GetStaticProps } from 'next'
 import { FC } from 'react'
+import { Container } from 'reactstrap'
 
 import { Post } from '@/interfaces/Post.interface'
 import { PostsList } from '@/lib/components/PostsList'
@@ -18,7 +19,9 @@ const Home: FC<Props> = ({ posts: initialPosts, nextPage: initialPage }) => {
   return (
     <PostStoreContext.Provider value={postStore}>
       <Layout>
-        <PostsList />
+        <Container fluid className="p-4">
+          <PostsList />
+        </Container>
       </Layout>
     </PostStoreContext.Provider>
   )
