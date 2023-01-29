@@ -15,11 +15,7 @@ export const PostsList: FC = () => {
   const { posts, hasMore, getNextPosts } = getPostStore()
 
   return (
-    <InfiniteScroll
-      hasMore={hasMore}
-      loadMore={getNextPosts}
-      initialLoad={false}
-      loader={<InfiniteScrollLoader />}>
+    <InfiniteScroll hasMore={hasMore} loadMore={getNextPosts} loader={<InfiniteScrollLoader />}>
       <Row>
         {posts.map((post) => (
           <PostCard key={post.id} post={post} />

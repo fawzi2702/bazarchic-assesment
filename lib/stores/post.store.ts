@@ -5,6 +5,7 @@ import { Post } from '@/interfaces/Post.interface'
 import { usePostsQuery } from '../hooks/posts.hook'
 
 export const usePostStore = (initialPosts: Post[], initialPage: number) => {
+  const [initialized, setInitialized] = useState<boolean>(false)
   const [posts, setPosts] = useState<Post[]>([])
   const [hasMore, setHasMore] = useState<boolean>(true)
   const [page, setPage] = useState<number>(1)
@@ -24,10 +25,12 @@ export const usePostStore = (initialPosts: Post[], initialPage: number) => {
     } else {
       setPage(initialPage)
     }
+
+    setInitialized(true)
   }, [initialPosts])
 
   const getNextPosts = async () => {
-    if (isLoading || !hasMore) {
+    if (!initialized || isLoading || !hasMore) {
       return
     }
     setLoading(true)
@@ -54,6 +57,7 @@ export const usePostStore = (initialPosts: Post[], initialPage: number) => {
     posts,
     hasMore,
     isLoading,
+    initialized,
 
     getNextPosts,
   }
